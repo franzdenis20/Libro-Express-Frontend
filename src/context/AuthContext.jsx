@@ -47,6 +47,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             console.log(error.response.data)
             console.log("error al ingrear " + isIngresar)
+            console.error(error)
             setErrors(error.response.data)
         }
     }
