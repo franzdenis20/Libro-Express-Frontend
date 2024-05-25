@@ -58,7 +58,7 @@ function App() {
 
 
                   <Route path='/ObtenerLibro/:id' element={<ObtenerLibro></ObtenerLibro>}></Route>
-                  <Route path='/MisLibros' element={<LibrosPedidos></LibrosPedidos>}></Route>
+                  <Route path='/MisLibros/:id' element={<LibrosPedidos></LibrosPedidos>}></Route>
                 </Route>
               </Routes>
 

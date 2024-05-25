@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 function ViajesUsers() {
     const { getViajes, viajes, sedes, getSedes } = useViajes();
-    const { cerrarSecion } = useAuth()
+    const { cerrarSecion, user } = useAuth()
 
     const [sede, setSede] = useState("Historia")
 
@@ -57,7 +57,7 @@ function ViajesUsers() {
 
                     <li>
 
-                        <Link type="button" className="btn btn-primary" style={{ color: "skyblue" }} to="/MisLibros" >Mis Libros</Link>
+                        <button className="btn btn-success" onClick={()=> navigate(`/MisLibros/${user.id}`)} >Mis Libros</button>
 
                     </li>
 

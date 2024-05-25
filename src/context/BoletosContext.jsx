@@ -8,7 +8,7 @@ import {
 
 } from "../api/boletos";
 
-import { registerPrestamoRequest } from "../api/prestamo";
+import { registerPrestamoRequest, getPrestamoRequest } from "../api/prestamo";
 
 const BoletoContext = createContext()
 
@@ -25,7 +25,12 @@ export const useBoleto = () => {
 export function BoletoProvider({ children }) {
 
     const [boletos, setBoletos] = useState([]);
-    const [asientosOcupados, setAsientosOcupados] = useState([])
+    const [asientosOcupados, setAsientosOcupados] = useState([]);
+
+
+    // Para el prestamo del libro
+
+    const [libroPrestados, setLibrosPrestados] = useState([]);
     
 
     // Para obtener los viajes
@@ -77,6 +82,24 @@ export function BoletoProvider({ children }) {
         }
     }
 
+    // Para obtener los libros prestados de un usuario
+
+    const getPrestamo = async(id)=>{
+
+        try {
+            const res = await getPrestamoRequest(id);
+            setLibrosPrestados(res.data);
+            console.log(res.data);
+            console.log(libroPrestados);
+            
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+    
+
+
 
 
     return (
@@ -87,7 +110,9 @@ export function BoletoProvider({ children }) {
             getBoletosViaje,
             asientosOcupados,
 
-            registerPrestamo
+            registerPrestamo,
+            getPrestamo,
+            libroPrestados
             
         }}>
             {children}

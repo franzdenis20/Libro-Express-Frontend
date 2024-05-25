@@ -77,7 +77,7 @@ function ObtenerLibro() {
         console.log(data);
         registerPrestamo(data);
         console.log("success");
-        navigate("/MisLibros");
+        navigate(`/MisLibros/${data.idUser}`);
 
     })
     return (
@@ -136,7 +136,7 @@ function ObtenerLibro() {
                     <label>Fecha De Debolucion</label>
                     <input type="date"
                         required
-                        {...register("fechaDebolicion", { required: true })}
+                        {...register("fechaDevolucion", { required: true })}
                         className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
 
                     ></input>
